@@ -13,6 +13,12 @@ RUN  apt  update  &&  \
 RUN  /bin/bash  -x  /root/.scripts/setup-data.sh
 
 ##
+##  Install g++ 5.4
+##
+
+RUN  apt  -y  install  --no-install-recommends  g++-5
+
+##
 ##  Set Working directory.
 ##
 
