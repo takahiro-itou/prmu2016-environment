@@ -46,6 +46,11 @@ RUN  echo  'export  PYENV_ROOT="/usr/local/pyenv"'     |  \
                   tee  -a  ${HOME}/.bashrc
 
 RUN  pyenv  install  3.5.1
+RUN  pyenv  global   3.5.1
+
+RUN  apt  -y  install  --no-install-recommends  \
+         libpng-dev  libfreetype6-dev
+ADD  ./requirements  /root/requirements
 
 ##
 ##  Set Working directory.
