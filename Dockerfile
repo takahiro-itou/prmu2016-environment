@@ -25,6 +25,27 @@ RUN  apt  -y  install  --no-install-recommends  make  &&  \
      --slave  /usr/bin/gcov  gcov  /usr/bin/gcov-5
 
 ##
+##  Install python 3.5.1
+##
+
+ENV  PYENV_ROOT     /usr/local/pyenv
+ENV  PATH           $PYENV_ROOT/bin:$PATH
+
+RUN  apt  -y  install  --no-install-recommends   curl  wget  \
+         libssl-dev  libbz2-dev  libreadline-dev  libsqlite3-dev    &&  \
+     git  clone  git://github.com/yyuu/pyenv.git  ${PYENV_ROOT}/    &&  \
+     git  clone  git://github.com/yyuu/pyenv-virtualenv.git  \
+                 ${PYENV_ROOT}/plugins/pyenv-virtualenv             &&  \
+     eval "$(pyenv init -)"
+
+RUN  echo  'export  PYENV_ROOT="/usr/local/pyenv"'     |  \
+                  tee  -a  ${HOME}/.bashrc                          &&  \
+     echo  'export  PATH="${PYENV_ROOT}/bin:${PATH}"'  |  \
+                  tee  -a  ${HOME}/.bashrc                          &&  \
+     echo  'eval "$(pyenv init -)"'                    |  \
+                  tee  -a  ${HOME}/.bashrc
+
+##
 ##  Set Working directory.
 ##
 
