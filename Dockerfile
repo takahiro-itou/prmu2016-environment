@@ -45,6 +45,8 @@ RUN  echo  'export  PYENV_ROOT="/usr/local/pyenv"'     |  \
      echo  'eval "$(pyenv init -)"'                    |  \
                   tee  -a  ${HOME}/.bashrc
 
+RUN  pyenv  install  3.5.1
+
 ##
 ##  Set Working directory.
 ##
