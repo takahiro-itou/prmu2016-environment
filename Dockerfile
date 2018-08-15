@@ -48,6 +48,10 @@ RUN  apt  -y  install  --no-install-recommends  \
          libxml2-dev  libxslt1-dev
 ADD  ./requirements  /root/requirements
 
+RUN  eval "$(pyenv init -)"  &&  \
+     pip  install  -r  /root/requirements/requirements1.txt  &&  \
+     pip  install  -r  /root/requirements/requirements2.txt
+
 ##
 ##  Set Working directory.
 ##
