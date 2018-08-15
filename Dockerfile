@@ -49,7 +49,7 @@ RUN  pyenv  install  3.5.1
 RUN  pyenv  global   3.5.1
 
 RUN  apt  -y  install  --no-install-recommends  \
-         libpng-dev  libfreetype6-dev
+         pkg-config  libpng-dev  libfreetype6-dev
 ADD  ./requirements  /root/requirements
 
 ##
