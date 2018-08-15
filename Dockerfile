@@ -29,24 +29,18 @@ RUN  apt  -y  install  --no-install-recommends  make  &&  \
 ##
 
 ENV  PYENV_ROOT     /usr/local/pyenv
-ENV  PATH           $PYENV_ROOT/bin:$PATH
+ENV  PATH           ${PYENV_ROOT}/bin:${PATH}
 
 RUN  apt  -y  install  --no-install-recommends   curl  wget  \
          libssl-dev  libbz2-dev  libreadline-dev  libsqlite3-dev    &&  \
      git  clone  git://github.com/yyuu/pyenv.git  ${PYENV_ROOT}/    &&  \
      git  clone  git://github.com/yyuu/pyenv-virtualenv.git  \
-                 ${PYENV_ROOT}/plugins/pyenv-virtualenv             &&  \
-     eval "$(pyenv init -)"
+                 ${PYENV_ROOT}/plugins/pyenv-virtualenv
 
-RUN  echo  'export  PYENV_ROOT="/usr/local/pyenv"'     |  \
-                  tee  -a  ${HOME}/.bashrc                          &&  \
-     echo  'export  PATH="${PYENV_ROOT}/bin:${PATH}"'  |  \
-                  tee  -a  ${HOME}/.bashrc                          &&  \
-     echo  'eval "$(pyenv init -)"'                    |  \
-                  tee  -a  ${HOME}/.bashrc
+RUN  echo  'eval "$(pyenv init -)"'  |  tee  -a  ${HOME}/.bashrc
 
-RUN  pyenv  install  3.5.1
-RUN  pyenv  global   3.5.1
+RUN  pyenv  install  -v  3.5.1
+RUN  pyenv  global       3.5.1
 
 RUN  apt  -y  install  --no-install-recommends  \
          pkg-config  libffi-dev  libfreetype6-dev  \
