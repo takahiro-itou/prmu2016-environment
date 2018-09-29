@@ -63,5 +63,7 @@ ADD  ./.jupyter  /root/.jupyter
 ##
 
 WORKDIR  /root/alcon2016
+ADD  ./JupyterNotebook  /root/alcon2016/JupyterNotebook
+
 CMD ["sh", "-c",  "/usr/local/pyenv/shims/jupyter notebook"]
 
