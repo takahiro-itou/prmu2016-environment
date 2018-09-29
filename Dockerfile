@@ -46,11 +46,15 @@ RUN  apt  -y  install  --no-install-recommends  \
          pkg-config  libffi-dev  libfreetype6-dev  \
          libhdf5-dev  liblapack-dev  libpng-dev    \
          libxml2-dev  libxslt1-dev
+
 ADD  ./requirements  /root/requirements
 
 RUN  eval "$(pyenv init -)"  &&  \
      pip  install  -r  /root/requirements/requirements1.txt  &&  \
      pip  install  -r  /root/requirements/requirements2.txt
+
+RUN  eval "$(pyenv init -)"  &&  \
+     pip  install  -I  path.py==9.1
 
 ADD  ./.jupyter  /root/.jupyter
 
