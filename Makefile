@@ -30,6 +30,9 @@ build:
 login:
 	${DOCKER_CMD}  run  --rm  -it  ${PACKAGE_NAME}  /bin/bash
 
+run-bg:
+	${DOCKER_CMD}  run  --rm  -itd -p 8080:25  ${PACKAGE_NAME}
+
 run:
 	${DOCKER_CMD}  run  --rm  -it  -p 8080:25  ${PACKAGE_NAME}
 
