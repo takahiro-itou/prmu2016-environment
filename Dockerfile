@@ -52,9 +52,12 @@ RUN  eval "$(pyenv init -)"  &&  \
      pip  install  -r  /root/requirements/requirements1.txt  &&  \
      pip  install  -r  /root/requirements/requirements2.txt
 
+ADD  ./.jupyter  /root/.jupyter
+
 ##
 ##  Set Working directory.
 ##
 
 WORKDIR  /root/alcon2016
+CMD ["sh", "-c",  "/usr/local/pyenv/shims/jupyter notebook"]
 

@@ -27,6 +27,9 @@ DOCKER_CMD    =  docker
 build:
 	${DOCKER_CMD}  build  -t  ${PACKAGE_NAME} ${SOURCE_DIR}
 
+login:
+	${DOCKER_CMD}  run  --rm  -it  ${PACKAGE_NAME}  /bin/bash
+
 run:
-	${DOCKER_CMD}  run  --rm  -it  ${PACKAGE_NAME}
+	${DOCKER_CMD}  run  --rm  -it  -p 8080:25  ${PACKAGE_NAME}
 
